@@ -44,7 +44,17 @@ different sets of articles for each user.
 ### Memoization
 Memoization can optimize your program by avoiding redoing tasks.
 
-###
+### Parallel Loops
+Some sequential loops can be made parallel although the loop hierarchy may change; nested loops become outer 
+loops and vice versa. Look at loop invariant to determine which loops to bring out. It's best to have few 
+parallel loops since creating a large amount of parallel tasks is 'expensive'. Loop chunking increases the work
+ on each loop but reduces the number of tasks.
+ 
+### Barrier
+In parallel loops, if we want the lower half of the loop body to not be executed until the upper part has 
+finished in all the parallel tasks, we can use a barrier. Tasks that finish early will stop and await at the 
+barrier until the last parallel task reaches the barrier.
+
 ## Mini Project 1
 Learn how to use Fork-Join framework to run task in parallel
 * Make a ReciprocalArraySumTask to do calculation in parallel by extending from RecursiveAction, which contains methods
@@ -68,3 +78,7 @@ kids
 ```
 Stream.of(personsArr).map(p -> p.getAge()) \\ multiply persons' age * 2
 
+## Mini Project 3
+Use (PCDP)[https://habanero-rice.github.io/PCDP/]'s forall2dChunked to calculate matrix multiplication
+* forall is an API for parallel loop iteration
+* forallChunked is an API that allows splitting the loop iterations into chunks so that each parallel task is responsible for running loop iterations within that chunks.
