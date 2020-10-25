@@ -144,7 +144,7 @@ public final class ReciprocalArraySum {
     }
 
     /**
-     * TODO: Modify this method to compute the same reciprocal sum as
+     * Modify this method to compute the same reciprocal sum as
      * seqArraySum, but use two tasks running in parallel under the Java Fork
      * Join framework. You may assume that the length of the input array is
      * evenly divisible by 2.
@@ -162,7 +162,7 @@ public final class ReciprocalArraySum {
     }
 
     /**
-     * TODO: Extend the work you did to implement parArraySum to use a set
+     * Extend the work you did to implement parArraySum to use a set
      * number of tasks to compute the reciprocal array sum. You may find the
      * above utilities getChunkStartInclusive and getChunkEndExclusive helpful
      * in computing the range of element indices that belong to each chunk.

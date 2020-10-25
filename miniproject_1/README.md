@@ -1,3 +1,0 @@
-PARALELLISM
-
-Class projects
