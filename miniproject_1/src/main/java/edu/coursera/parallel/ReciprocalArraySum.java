@@ -102,7 +102,7 @@ public final class ReciprocalArraySum {
          * Intermediate value produced by this task.
          */
         private double value;
-        private static final int seqFactor = 100000;
+        private static final int seqFactor = 1000;
         /**
          * Constructor.
          * @param setStartIndexInclusive Set the starting index to begin
@@ -133,8 +133,8 @@ public final class ReciprocalArraySum {
                     value += 1 / input[i];
                 }
             } else {
-                ReciprocalArraySumTask l = new ReciprocalArraySumTask(startIndexInclusive, (endIndexExclusive + startIndexInclusive)/2, input);
-                ReciprocalArraySumTask r = new ReciprocalArraySumTask((endIndexExclusive + startIndexInclusive)/2, endIndexExclusive, input);
+                ReciprocalArraySumTask l = new ReciprocalArraySumTask(startIndexInclusive, startIndexInclusive + (endIndexExclusive - startIndexInclusive)/2, input);
+                ReciprocalArraySumTask r = new ReciprocalArraySumTask(startIndexInclusive + (endIndexExclusive - startIndexInclusive)/2, endIndexExclusive, input);
                 l.fork();
                 r.compute();
                 l.join();
@@ -156,9 +156,9 @@ public final class ReciprocalArraySum {
         assert input.length % 2 == 0;
         double sum = 0;
         // Compute sum of reciprocals of array elements
-            ReciprocalArraySumTask t = new ReciprocalArraySumTask(0, input.length, input);
-            t.invoke();
-            return t.getValue();
+        ReciprocalArraySumTask t = new ReciprocalArraySumTask(0, input.length, input);
+        t.invoke();
+        return t.getValue();
     }
 
     /**
