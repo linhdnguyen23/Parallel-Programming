@@ -1,0 +1,10 @@
+*idea
+*idea/*
+/target/*
+*.class
+*classpath
+*project
+*.xml
+*.settings
+*.settings/*
+
